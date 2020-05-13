@@ -18,11 +18,13 @@ def index(request):
 
             )
 
-        return render(request, 'index.html', {'show_txt': show_txt, "form": form,request.GET} )
+
+        return render(request, 'index.html', {'show_txt': show_txt, "form": form})
 
     form = UserInputForm()
 
     return render(request, 'index.html', {'form': form})
+
 
 
 def history(request):
