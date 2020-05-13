@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponseRedirect
+from django.shortcuts import render,HttpResponseRedirect, reverse
 from cowsay_project.forms import UserInputForm
 from cowsay_project.models import UserTextInput
 import subprocess
@@ -6,8 +6,10 @@ import subprocess
 
 
 def index(request):
+    new_form = UserInputForm()
     if request.method == 'POST':
         form = UserInputForm(request.POST)
+
         if form.is_valid():
             user_text = form.cleaned_data
             show_txt = subprocess.run(
@@ -17,11 +19,10 @@ def index(request):
                 text=user_text['text']
 
             )
-
-
-        return render(request, 'index.html', {'show_txt': show_txt, "form": form})
+        return render(request, 'index.html', {'show_txt': show_txt, "form": new_form})
 
     form = UserInputForm()
+
 
     return render(request, 'index.html', {'form': form})
 
