@@ -1,1 +1,21 @@
-<h1>Hello world!!</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Cowsay</title>
+</head>
+<body>
+
+    <h1> Django Cowsay</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <a href="/history"> Cowsay's History </a>
+
+        <pre>{{show_txt}} </pre>
+        <input type="submit" value="Submit!">
+    </form>
+
+</body>
+</html>
